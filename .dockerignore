@@ -1,0 +1,7 @@
+.docker
+.github
+.idea
+.run
+.gitignore
+readme.md
+Dockerfile
