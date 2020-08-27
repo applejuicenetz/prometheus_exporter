@@ -3,5 +3,5 @@
 .idea
 .run
 .gitignore
-readme.md
+README.md
 Dockerfile

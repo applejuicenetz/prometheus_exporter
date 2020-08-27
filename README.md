@@ -1,11 +1,11 @@
 # appleJuice Prometheus Exporter
 
-![Docker Pulls](https://img.shields.io/docker/pulls/applejuicenet/applejuice_exporter.svg)
-![Docker Stars](https://img.shields.io/docker/stars/applejuicenet/applejuice_exporter.svg)
+![Docker Pulls](https://img.shields.io/docker/pulls/applejuicenet/prometheus_exporter.svg)
+![Docker Stars](https://img.shields.io/docker/stars/applejuicenet/prometheus_exporter.svg)
 ![Docker Build](https://github.com/applejuicenet/prometheus_exporter/workflows/%5Bdocker%5D%20CI%20for%20releases/badge.svg)
-![MicroBadger Size](https://img.shields.io/microbadger/image-size/applejuicenet/applejuice_exporter.svg)
+![MicroBadger Size](https://img.shields.io/microbadger/image-size/applejuicenet/prometheus_exporter.svg)
 
-Prometheus exporter for appleJuice Client
+[Prometheus](https://prometheus.io/) Metriken exporter für den appleJuice Client
 
 ## Prometheus
 
@@ -22,7 +22,7 @@ scrape_configs:
 
 ## Docker
 
-https://hub.docker.com/r/applejuicenet/applejuice_exporter
+https://hub.docker.com/r/applejuicenet/prometheus_exporter
 
 ### Exposed Ports
 
@@ -48,7 +48,7 @@ docker run -d \
         -e "CORE_PORT=9851" \
         -e "CORE_PASSWORD=de305845b091d971732a123977e2d816" \
         --name applejuice2prometheus \
-        applejuicenet/applejuice_exporter:latest
+        applejuicenet/prometheus_exporter:latest
 ```
 
 ### docker-compose.yml
@@ -58,7 +58,7 @@ version: '2.4'
 
 services:
     applejuice2prometheus:
-        image: applejuicenet/applejuice_exporter:latest
+        image: applejuicenet/prometheus_exporter:latest
         restart: always
         container_name: applejuice2prometheus
         mem_limit: 32MB
