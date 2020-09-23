@@ -1,8 +1,9 @@
-name: '[docker] CI for releases'
+name: 'docker'
 
 on:
-    create:
-        tags:
+    push:
+    schedule:
+        -   cron:  '0 7 * * MON'
 
 jobs:
     release:
@@ -37,5 +38,4 @@ jobs:
                     --build-arg VCS_REF=${{ env.GITHUB_SHA_SHORT }} \
                     --output "type=image,push=true" \
                     --file ./Dockerfile . \
-                    -t "${{ secrets.DOCKER_IMAGE }}:${{ env.GITHUB_REF_SLUG }}" \
                     -t "${{ secrets.DOCKER_IMAGE }}:latest"
