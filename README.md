@@ -1,9 +1,9 @@
 # appleJuice Prometheus Exporter
 
-![Docker Pulls](https://img.shields.io/docker/pulls/applejuicenet/prometheus_exporter.svg)
-![Docker Stars](https://img.shields.io/docker/stars/applejuicenet/prometheus_exporter.svg)
-![Docker Build](https://github.com/applejuicenet/prometheus_exporter/workflows/%5Bdocker%5D%20CI%20for%20releases/badge.svg)
-![MicroBadger Size](https://img.shields.io/microbadger/image-size/applejuicenet/prometheus_exporter.svg)
+![](https://img.shields.io/github/license/applejuicenet/prometheus_exporter.svg)
+![](https://img.shields.io/docker/pulls/applejuicenet/prometheus_exporter.svg)
+![](https://img.shields.io/docker/image-size/applejuicenet/prometheus_exporter)
+![](https://github.com/applejuicenet/prometheus_exporter/workflows/docker/badge.svg)
 
 [Prometheus](https://prometheus.io/) Metriken exporter für den appleJuice Client
 
