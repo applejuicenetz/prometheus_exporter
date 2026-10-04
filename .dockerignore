@@ -1,7 +1,14 @@
 .docker
+.git
 .github
 .idea
 .run
 .gitignore
 README.md
 Dockerfile
+.env
+.env.dist
+*_test.go
+AGENTS.md
+CLAUDE.md
+testdata

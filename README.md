@@ -1,9 +1,14 @@
 # appleJuice Prometheus Exporter
 
 ![](https://img.shields.io/github/license/applejuicenetz/prometheus_exporter.svg)
-![](https://github.com/applejuicenetz/prometheus_exporter/workflows/docker/badge.svg)
+![](https://github.com/applejuicenetz/prometheus_exporter/workflows/container/badge.svg)
 
 [Prometheus](https://prometheus.io/) Metriken exporter für den appleJuice Client
+
+Go ersetzt PHP/Apache. Bestehende Container-Konfiguration, Port `80` und
+Metrikausgabe bleiben erhalten: `applejuice_<Attributname> <Attributwert>`
+in der Reihenfolge der XML-Attribute, ohne zusätzliche Metriken, `HELP` oder `TYPE`.
+Abruf über `/metrics`, `/metrics/` oder `/metrics/index.php`.
 
 ## Prometheus
 
@@ -20,7 +25,7 @@ scrape_configs:
 
 ### Exposed Ports
 
-- `80` - HTTP Port
+- `80` - HTTP Port (Container läuft als `nonroot` auf Basis von `gcr.io/distroless/static-debian13`)
 
 ### Environment Variables
 
@@ -29,6 +34,8 @@ scrape_configs:
 | `CORE_HOST`     | `http://192.168.2.1` | IP/HOST where Core is running  |
 | `CORE_PORT`     | `9851`               | Core XML Port                  |
 | `CORE_PASSWORD` | `md5sum` or plain    | `md5` hashed or plain password |
+| `PHP_SOCKET_TIMEOUT` | `10`            | optional, Timeout in Sekunden für den Core-Abruf |
+| `LISTEN_ADDR`   | `:80`                | optional, Listen-Adresse des Exporters |
 
 ## Docker
 

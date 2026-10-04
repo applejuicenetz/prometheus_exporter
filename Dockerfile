@@ -1,14 +1,25 @@
-FROM php:8-apache
+FROM --platform=$BUILDPLATFORM golang:1.27-alpine AS build
+
+WORKDIR /src
+
+COPY go.mod ./
+COPY *.go ./
+
+ARG TARGETOS
+ARG TARGETARCH
+
+RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
+    go build -trimpath -ldflags="-s -w" -o /exporter .
+
+FROM gcr.io/distroless/static-debian13:nonroot
 
 ENV CORE_HOST="" \
-    CORE_PORT=9851 \
-    CORE_PASSWORD=""
+    CORE_PORT=9851
 
-COPY index.php /var/www/html/metrics/
-
-RUN echo "<a href=/metrics>/metrics</a>" > /var/www/html/index.html
+COPY --from=build /exporter /exporter
 
 EXPOSE 80
 
-HEALTHCHECK --interval=60s --start-period=5s CMD curl -I --fail http://localhost:80 || exit 1
+HEALTHCHECK --interval=60s --start-period=5s CMD ["/exporter", "healthcheck"]
 
+ENTRYPOINT ["/exporter"]
